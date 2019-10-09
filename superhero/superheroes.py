@@ -74,6 +74,13 @@ class Hero:
             total_damage += ability.attack()
         return total_damage
 
+    def add_armor(self, armor):
+        '''
+        Add armor to self.armors
+        Armor: Armor Object
+        '''
+        self.armors.append(armor)
+
     def defend(self, incoming_damage):
         pass
 
