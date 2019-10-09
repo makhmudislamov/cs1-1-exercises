@@ -133,6 +133,6 @@ if __name__ == "__main__":
     # hero2.add_ability(ability2)
     # hero.fight(hero2)
 
-    ability = Ability("Debugging Ability", 20)
-    print(ability.name)
-    print(ability.attack())
+    armor = Armor("Shield", 20)
+    print(armor.name)
+    print(armor.block())
