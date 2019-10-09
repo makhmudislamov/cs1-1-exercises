@@ -8,7 +8,7 @@ class Ability:
         method as instance variables.
         '''
         self.name = name
-        self.max_max_damage = max_damage
+        self.max_damage = max_damage
 
     def __str__(self):
         return f'This is ability name {self.name}'
@@ -18,7 +18,7 @@ class Ability:
         Use random.randint(a, b) to select a random attack value.
         Return an attack value between 0 and the full attack.
         '''
-        attack_value = random.randint(0, self.attack_strength)
+        attack_value = random.randint(0, self.max_damage)
         return attack_value
 
 class Armor():
@@ -114,16 +114,20 @@ class Hero:
 
 if __name__ == "__main__":
 
-    hero = Hero("Wonder Woman")
-    print(hero.attack())
-    ability = Ability("Divine Speed", 20)
-    hero.add_ability(ability)
-    print(hero.attack())
-    print(hero.name)
-    new_ability = Ability("Super Human Strength", 30)
-    hero.add_ability(new_ability)
-    print(hero.attack())
-    hero2 = Hero("Jodie Foster")
-    ability2 = Ability("Science", 800)
-    hero2.add_ability(ability2)
-    hero.fight(hero2)
+    # hero = Hero("Wonder Woman")
+    # print(hero.attack())
+    # ability = Ability("Divine Speed", 20)
+    # hero.add_ability(ability)
+    # print(hero.attack())
+    # print(hero.name)
+    # new_ability = Ability("Super Human Strength", 30)
+    # hero.add_ability(new_ability)
+    # print(hero.attack())
+    # hero2 = Hero("Jodie Foster")
+    # ability2 = Ability("Science", 800)
+    # hero2.add_ability(ability2)
+    # hero.fight(hero2)
+
+    ability = Ability("Debugging Ability", 20)
+    print(ability.name)
+    print(ability.attack())
