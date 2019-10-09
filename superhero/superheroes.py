@@ -32,7 +32,7 @@ class Armor():
 
     def block(self):
         pass
-    
+
     
 
 class Hero:
@@ -66,6 +66,8 @@ class Hero:
             total_damage += ability.attack()
         return total_damage
 
+    def defend(self, incoming_damage):
+        pass
 
     def take_damage(self, damage):
         '''
