@@ -31,7 +31,12 @@ class Armor():
         self.max_block = max_block
 
     def block(self):
-        pass
+        ''' 
+        Return a random value between 
+        0 and the initialized max_block strength. 
+        '''
+        block_value = random.randint(0, self.max_block)
+        return block_value
 
     
 
