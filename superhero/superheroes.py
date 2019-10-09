@@ -45,15 +45,18 @@ class Hero:
         '''
         Initialize these values as instance variables:
         (Some of these values are passed in above, others will need to be set at a starting value.)
-        abilities:List
-        name:
-        starting_health:
-        current_health:
+          abilities: List
+          armors: List
+          name: String
+          starting_health: Integer
+          current_health: Integer
         '''
+        self.abilities = list()
+        self.armors = list()
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health
-        self.abilities = list()
+        
 
     def add_ability(self, ability):
         ''' Add ability to abilities list '''
@@ -133,6 +136,6 @@ if __name__ == "__main__":
     # hero2.add_ability(ability2)
     # hero.fight(hero2)
 
-    armor = Armor("Shield", 20)
-    print(armor.name)
-    print(armor.block())
+    my_hero = Hero("Grace Hopper", 200)
+    print(my_hero.name)
+    print(my_hero.current_health)
