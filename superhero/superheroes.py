@@ -96,7 +96,7 @@ class Hero:
         This method should update self.current_health
         with the damage that is passed in.
         '''
-        self.current_health -= damage
+        self.current_health -= self.defend(damage)
         return self.current_health
 
     def is_alive(self):  
@@ -150,9 +150,8 @@ if __name__ == "__main__":
     # hero2.add_ability(ability2)
     # hero.fight(hero2)
 
-    ability = Ability("Great Debugging", 50)
-    another_ability = Ability("Smarty Pants", 90)
     hero = Hero("Grace Hopper", 200)
-    hero.add_ability(ability)
-    hero.add_ability(another_ability)
-    print(hero.attack())
+    shield = Armor("Shield", 50)
+    hero.add_armor(shield)
+    hero.take_damage(50)
+    print(hero.current_health)
