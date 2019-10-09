@@ -105,9 +105,12 @@ class Hero:
         return true if the hero is alive
         or false if they are not.
         '''
+        # TODO: fix this function. when a hero is dead, it is not returning False
         if self.current_health > 0:
+            print('alive')
             return True
-        else:
+        if self.current_health < 0:
+            print('dead')
             return False
 
     def fight(self, opponent):  
@@ -151,7 +154,7 @@ if __name__ == "__main__":
     # hero.fight(hero2)
 
     hero = Hero("Grace Hopper", 200)
-    shield = Armor("Shield", 50)
-    hero.add_armor(shield)
-    hero.take_damage(50)
-    print(hero.current_health)
+    hero.take_damage(150)
+    print(hero.is_alive())
+    hero.take_damage(15000)
+    print(hero.is_alive())
