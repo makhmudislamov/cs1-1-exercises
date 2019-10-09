@@ -1,5 +1,40 @@
 import random
 
+
+class Ability:
+    def __init__(self, name, max_damage):
+        '''
+        Initialize the values passed into this
+        method as instance variables.
+        '''
+        self.name = name
+        self.max_max_damage = max_damage
+
+    def __str__(self):
+        return f'This is ability name {self.name}'
+
+    def attack(self):
+        '''
+        Use random.randint(a, b) to select a random attack value.
+        Return an attack value between 0 and the full attack.
+        '''
+        attack_value = random.randint(0, self.attack_strength)
+        return attack_value
+
+class Armor():
+    def __init__(self, name, max_block):
+        '''
+        Initialize the values passed into this
+        method as instance variables.
+        '''
+        self.name = name
+        self.max_block = max_block
+
+    def block(self):
+        pass
+    
+    
+
 class Hero:
     def __init__(self, name, starting_health=100):
         '''
@@ -72,25 +107,7 @@ class Hero:
         #     elif opponent.is_alive is False:
         #         print("{} killed {}!".format(self.name, opponent.name))
 
-class Ability:
-    def __init__(self, name, attack_strength):
-        '''
-        Initialize the values passed into this
-        method as instance variables.
-         '''
-        self.name = name
-        self.attack_strength = attack_strength
 
-    def __str__(self):
-        return f'This is ability name {self.name}'
-
-    def attack(self):
-        '''
-       Use random.randint(a, b) to select a random attack value.
-        Return an attack value between 0 and the full attack.
-        '''
-        attack_value = random.randint(0, self.attack_strength)
-        return attack_value
 
 
 if __name__ == "__main__":
