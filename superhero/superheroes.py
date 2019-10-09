@@ -81,8 +81,15 @@ class Hero:
         '''
         self.armors.append(armor)
 
-    def defend(self, incoming_damage):
-        pass
+    def defend(self, damage_amt):
+        '''
+        Runs `block` method on each armor.
+        Returns sum of all blocks
+        '''
+        damage_amt = 0
+        for armor in self.armors:
+            damage_amt += armor.block()
+        return damage_amt
 
     def take_damage(self, damage):
         '''
