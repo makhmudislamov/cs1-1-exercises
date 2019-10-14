@@ -123,7 +123,7 @@ class Hero:
         # self.take_damage(opponent.attack())
         # opponent.take_damage(self.attack())
 
-
+        # TODO: double check your while loop
 
         while self.is_alive or opponent.is_alive:
 
@@ -142,6 +142,13 @@ class Hero:
                 print("{} won!".format(opponent.name))
             break 
 
+
+class Weapon(Ability):
+    def attack(self):
+        """  This method returns a random value
+        between one half to the full attack power of the weapon.
+        """
+        return random.randint(self.max_damage // 2, self.max_damage)
  
 
 
