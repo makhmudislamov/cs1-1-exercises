@@ -113,21 +113,19 @@ class Hero:
         ''' 
         Current Hero will take turns fighting the opponent hero passed in.
         '''
-        # TODO: Fight each hero until a victor emerges.
-        # Print the victor's name to the screen.
         print("{} vs {}. FIGHT!".format(self.name, opponent.name))
-        while (self.is_alive) and (opponent.is_alive):
-            # print("here2")
-            # self.take_damage(opponent.attack())
-            # opponent.take_damage(self.attack())
-            self.attack()
-            opponent.attack()
-            if not self.is_alive:
-                print("{} killed {}!".format(opponent.name, self.name))
-            elif not opponent.is_alive:
-                print("{} killed {}!".format(self.name, opponent.name))
-            else:
-                print("DRAW")
+        # base case: both heroes have no abilities to fight
+        if (not self.abilities) and (not opponent.abilities):
+            print("DRAW. The Heroes have no abilites to fight!")
+
+        while (self.attack()) and (opponent.attack()):
+
+            if self.is_alive :
+                print("{} won!".format(self.name))
+            elif opponent.is_alive:
+                print("{} won!".format(opponent.name))
+            break
+ 
 
 
 
@@ -137,11 +135,11 @@ if __name__ == "__main__":
     hero2 = Hero("Dumbledore")
     ability1 = Ability("Super Speed", 300)
     ability2 = Ability("Super Eyes", 130)
-    ability3 = Ability("Wizard Wand", 80)
-    ability4 = Ability("Wizard Beard", 20)
+    ability3 = Ability("Wizard Wand", 8000)
+    ability4 = Ability("Wizard Beard", 20000)
     hero1.add_ability(ability1)
     hero1.add_ability(ability2)
     hero2.add_ability(ability3)
     hero2.add_ability(ability4)
 
-    hero1.fight(hero2)
+    hero2.fight(hero1)
