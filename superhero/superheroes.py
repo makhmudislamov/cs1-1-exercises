@@ -61,6 +61,7 @@ class Hero:
     def add_ability(self, ability):
         ''' Add ability to abilities list '''
         self.abilities.append(ability)
+        
 
     def attack(self):
         '''
