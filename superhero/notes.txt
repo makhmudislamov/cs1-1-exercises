@@ -1,3 +1,0 @@
-Blocker 7/9
-1. Writing test on add_ability - assertion error
-2. fight method is not working as shown on page 2
