@@ -56,7 +56,13 @@ class Hero:
         self.name = name
         self.starting_health = starting_health
         self.current_health = starting_health
+        self.deaths = 0
+        self.kills = 0
         
+    def add_kill(self, parameter_list):
+        pass
+
+    
 
     def add_ability(self, ability):
         ''' Add ability to abilities list '''
