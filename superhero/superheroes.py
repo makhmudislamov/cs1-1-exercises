@@ -151,6 +151,19 @@ class Weapon(Ability):
         return random.randint(self.max_damage // 2, self.max_damage)
  
 
+class Team:
+    
+    def __init__(self, name):
+        self.name = name
+
+    def add_hero(self, hero):
+        pass
+
+    def remover_hero(self, name):
+        pass
+
+    def view_all_heroes(self):
+        pass
 
 
 if __name__ == "__main__":
