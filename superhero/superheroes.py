@@ -69,10 +69,10 @@ class Hero:
         on every ability in self.abilities and
         return the total.
         '''
-        total_damage = 0
+        damage = 0
         for ability in self.abilities:
-            total_damage += ability.attack()
-        return total_damage
+            damage += ability.attack()
+        return damage
 
     def add_armor(self, armor):
         '''
@@ -107,24 +107,41 @@ class Hero:
         '''
         if self.current_health > 0:
             return True
-        return False
+        else:
+            return False
 
     def fight(self, opponent):
         ''' 
         Current Hero will take turns fighting the opponent hero passed in.
         '''
         print("{} vs {}. FIGHT!".format(self.name, opponent.name))
-        # base case: both heroes have no abilities to fight
+
+        # base case: both heroes have no abilities to fight  
         if (not self.abilities) and (not opponent.abilities):
             print("DRAW. The Heroes have no abilites to fight!")
 
-        while (self.attack()) and (opponent.attack()):
+        # self.take_damage(opponent.attack())
+        # opponent.take_damage(self.attack())
 
-            if self.is_alive :
+
+
+        while self.is_alive or opponent.is_alive:
+
+            self.take_damage(opponent.attack())
+            opponent.take_damage(self.attack())
+
+            # print(self.name, self.take_damage(opponent.attack()))
+            # print(opponent.name, opponent.take_damage(self.attack()))
+            # print(self.current_health)
+            
+
+            # if opponent.take_damage(self.attack()) and self.take_damage(opponent.attack()):
+            if self.current_health > 0 and opponent.current_health < 0:
                 print("{} won!".format(self.name))
-            elif opponent.is_alive:
+            else:
                 print("{} won!".format(opponent.name))
-            break
+            break 
+
  
 
 
@@ -133,13 +150,13 @@ if __name__ == "__main__":
 
     hero1 = Hero("Wonder Woman")
     hero2 = Hero("Dumbledore")
-    ability1 = Ability("Super Speed", 300)
-    ability2 = Ability("Super Eyes", 130)
+    ability1 = Ability("Super Speed", 30)
+    ability2 = Ability("Super Eyes", 10)
     ability3 = Ability("Wizard Wand", 8000)
-    ability4 = Ability("Wizard Beard", 20000)
+    ability4 = Ability("Wizard Beard", 2000000)
     hero1.add_ability(ability1)
     hero1.add_ability(ability2)
     hero2.add_ability(ability3)
     hero2.add_ability(ability4)
 
-    hero2.fight(hero1)
+    hero1.fight(hero2)
