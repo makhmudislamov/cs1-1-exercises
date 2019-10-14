@@ -134,25 +134,20 @@ class Hero:
         if (not self.abilities) and (not opponent.abilities):
             print("DRAW. The Heroes have no abilites to fight!")
 
-        # self.take_damage(opponent.attack())
-        # opponent.take_damage(self.attack())
-
         # TODO: double check your while loop
 
         while self.is_alive or opponent.is_alive:
 
             self.take_damage(opponent.attack())
             opponent.take_damage(self.attack())
-
-            # print(self.name, self.take_damage(opponent.attack()))
-            # print(opponent.name, opponent.take_damage(self.attack()))
-            # print(self.current_health)
             
-
-            # if opponent.take_damage(self.attack()) and self.take_damage(opponent.attack()):
             if self.current_health > 0 and opponent.current_health < 0:
+                self.add_kill(1)
+                opponent.add_deaths(1)
                 print("{} won!".format(self.name))
             else:
+                opponent.add_kills(1)
+                self.add_deaths(1)
                 print("{} won!".format(opponent.name))
             break 
 
@@ -196,6 +191,28 @@ class Team:
         '''
         for hero in self.heroes:
             print(hero)
+    
+ 
+    def attack(self, other_team):
+        ''' Battle each team against each other.'''
+        # TODO: Randomly select a living hero from each team and have
+        # them fight until one or both teams have no surviving heroes.
+        # Hint: Use the fight method in the Hero class.
+        pass
+
+    def revive_heroes(self, health=100):
+        ''' Reset all heroes health to starting_health'''
+        # TODO: This method should reset all heroes health to their
+        # original starting value.
+        pass
+
+    def stats(self):
+        '''Print team statistics'''
+        # TODO: This method should print the ratio of kills/deaths for each
+        # member of the team to the screen.
+        # This data must be output to the console.
+        # Hint: Use the information stored in each hero.
+        pass
 
 
 if __name__ == "__main__":
