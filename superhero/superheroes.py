@@ -59,8 +59,15 @@ class Hero:
         self.deaths = 0
         self.kills = 0
         
-    def add_kill(self, parameter_list):
-        pass
+    def add_kill(self, num_kills):
+        ''' Update kills with num_kills'''
+        self.kills += num_kills
+        return self.kills
+
+    def add_deaths(self, num_deaths):
+        ''' Update deaths with num_deaths'''
+        self.deaths += num_deaths
+        return self.deaths
 
     
 
