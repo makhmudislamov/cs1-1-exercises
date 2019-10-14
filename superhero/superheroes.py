@@ -154,26 +154,44 @@ class Weapon(Ability):
 class Team:
     
     def __init__(self, name):
+        ''' 
+        Initialize your team with its team name
+        '''
         self.name = name
+        self.heroes = list()
 
     def add_hero(self, hero):
-        pass
+        '''
+        Adding heroes to a team
+        '''
+        self.heroes.append(hero)
 
-    def remover_hero(self, name):
-        pass
+    def remove_hero(self, name):
+        '''
+        Removing heroes from the team
+        If Hero isn't found return 0.
+        '''
+        if name not in self.heroes:
+            return 0
+        else:
+            self.heroes.remove(name)
 
     def view_all_heroes(self):
-        pass
+        '''
+        Prints out all heroes to the console
+        '''
+        for hero in self.heroes:
+            print(hero)
 
 
 if __name__ == "__main__":
 
     hero1 = Hero("Wonder Woman")
     hero2 = Hero("Dumbledore")
-    ability1 = Ability("Super Speed", 30)
-    ability2 = Ability("Super Eyes", 10)
-    ability3 = Ability("Wizard Wand", 8000)
-    ability4 = Ability("Wizard Beard", 2000000)
+    ability1 = Ability("Super Speed", 3000)
+    ability2 = Ability("Super Eyes", 1000)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
     hero1.add_ability(ability1)
     hero1.add_ability(ability2)
     hero2.add_ability(ability3)
