@@ -109,48 +109,39 @@ class Hero:
             return True
         return False
 
-    def fight(self, opponent):  
+    def fight(self, opponent):
+        ''' 
+        Current Hero will take turns fighting the opponent hero passed in.
         '''
-        Runs a loop to attack the opponent until someone dies.
-        '''
+        # TODO: Fight each hero until a victor emerges.
+        # Print the victor's name to the screen.
         print("{} vs {}. FIGHT!".format(self.name, opponent.name))
-        if self.abilities == 0 or opponent.abilities == 0:
-            print("here1")
-            # self.take_damage(0)
-            # opponent.take_damage(0)
-            # print("Both heroes don't have abilities")
-        # else:
-        # print("here1")
-        # while (self.is_alive is True and opponent.is_alive is True):
-        #     print("here2")
-        #     self.take_damage(opponent.attack())
-        #     opponent.take_damage(self.attack())
-        #     if self.is_alive is False:
-        #         print("{} killed {}!".format(opponent.name, self.name))
-        #     elif opponent.is_alive is False:
-        #         print("{} killed {}!".format(self.name, opponent.name))
-
+        while (self.is_alive) and (opponent.is_alive):
+            # print("here2")
+            # self.take_damage(opponent.attack())
+            # opponent.take_damage(self.attack())
+            self.attack()
+            opponent.attack()
+            if not self.is_alive:
+                print("{} killed {}!".format(opponent.name, self.name))
+            elif not opponent.is_alive:
+                print("{} killed {}!".format(self.name, opponent.name))
+            else:
+                print("DRAW")
 
 
 
 if __name__ == "__main__":
 
-    # hero = Hero("Wonder Woman")
-    # print(hero.attack())
-    # ability = Ability("Divine Speed", 20)
-    # hero.add_ability(ability)
-    # print(hero.attack())
-    # print(hero.name)
-    # new_ability = Ability("Super Human Strength", 30)
-    # hero.add_ability(new_ability)
-    # print(hero.attack())
-    # hero2 = Hero("Jodie Foster")
-    # ability2 = Ability("Science", 800)
-    # hero2.add_ability(ability2)
-    # hero.fight(hero2)
+    hero1 = Hero("Wonder Woman")
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
 
-    hero = Hero("Grace Hopper", 200)
-    hero.take_damage(150)
-    print(hero.is_alive())
-    hero.take_damage(15000)
-    print(hero.is_alive())
+    hero1.fight(hero2)
