@@ -16,16 +16,19 @@ class Team:
         Adding heroes to a team
         '''
         self.heroes.append(hero)
+        # testing
+        print(f'added hero is {hero}')
 
     def remove_hero(self, name):
         '''
         Removing heroes from the team
         If Hero isn't found return 0.
         '''
-        if name not in self.heroes:
-            return 0
-        else:
-            self.heroes.remove(name)
+        for hero in self.heroes:
+            if hero.name == name:
+                self.heroes.remove(hero)
+                print(f'removed hero is {name}')
+        return 0
 
     def view_all_heroes(self):
         '''

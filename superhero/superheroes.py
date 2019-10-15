@@ -157,4 +157,11 @@ if __name__ == "__main__":
     hero1.add_ability(ability2)
     hero2.add_ability(ability3)
     hero2.add_ability(ability4)
-    hero1.fight(hero2)
+    team = Team("Super")
+    team.add_hero(hero1)
+    team.add_hero(hero2)
+    team.view_all_heroes()
+    team.remove_hero("Wonder Woman")
+    team.view_all_heroes()
+
+    # hero1.fight(hero2)
