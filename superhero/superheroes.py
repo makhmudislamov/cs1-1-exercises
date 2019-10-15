@@ -1,4 +1,4 @@
-import random
+from random import randint
 
 
 class Ability:
@@ -13,12 +13,13 @@ class Ability:
     def __str__(self):
         return f'This is ability name {self.name}'
 
-    def attack(self):
+    def ability_attack(self):
         '''
-        Use random.randint(a, b) to select a random attack value.
+        Use randint(a, b) to select a random attack value.
         Return an attack value between 0 and the full attack.
         '''
-        attack_value = random.randint(0, self.max_damage)
+        attack_value = randint(0, self.max_damage)
+        print(f"attack value in ability: {attack_value}")
         return attack_value
 
 class Armor():
@@ -35,7 +36,7 @@ class Armor():
         Return a random value between 
         0 and the initialized max_block strength. 
         '''
-        block_value = random.randint(0, self.max_block)
+        block_value = randint(0, self.max_block)
         return block_value
 
     
@@ -76,7 +77,7 @@ class Hero:
         self.abilities.append(ability)
         
 
-    def attack(self):
+    def hero_attack(self):
         '''
         Calculates damage from list of abilities.
         This method should call Ability.attack()
@@ -85,7 +86,7 @@ class Hero:
         '''
         damage = 0
         for ability in self.abilities:
-            damage += ability.attack()
+            damage += ability.ability_attack()
         return damage
 
     def add_armor(self, armor):
@@ -136,28 +137,32 @@ class Hero:
 
         # TODO: double check your while loop
 
-        while self.is_alive or opponent.is_alive:
+        while self.is_alive() and opponent.is_alive():
 
-            self.take_damage(opponent.attack())
-            opponent.take_damage(self.attack())
+            self.take_damage(opponent.hero_attack())
+            print(f"self.current healt {self.current_health}")
+            opponent.take_damage(self.hero_attack())
+            print(f"opponent.current healt {opponent.current_health}")
             
-            if self.current_health > 0 and opponent.current_health < 0:
-                self.add_kill(1)
-                opponent.add_deaths(1)
-                print("{} won!".format(self.name))
-            else:
-                opponent.add_kills(1)
-                self.add_deaths(1)
-                print("{} won!".format(opponent.name))
-            break 
-
+            if self.current_health > 0 and opponent.current_health <= 0:
+                # self.add_kill(1)
+                # opponent.add_deaths(1)
+                # print("{} won!".format(self.name))
+                winner = self.name
+            elif self.current_health <= 0 and opponent.current_health > 0:
+                # opponent.add_kills(1)
+                # self.add_deaths(1)
+                winner = opponent.name
+                # print("{} won!".format(opponent.name))
+            # break 
+        print(f"Winner is {winner}")
 
 class Weapon(Ability):
-    def attack(self):
+    def ability_attack(self):
         """  This method returns a random value
         between one half to the full attack power of the weapon.
         """
-        return random.randint(self.max_damage // 2, self.max_damage)
+        return randint(self.max_damage // 2, self.max_damage)
  
 
 class Team:
@@ -174,6 +179,7 @@ class Team:
         Adding heroes to a team
         '''
         self.heroes.append(hero)
+        
 
     def remove_hero(self, name):
         '''
@@ -190,15 +196,30 @@ class Team:
         Prints out all heroes to the console
         '''
         for hero in self.heroes:
-            print(hero)
+            print(hero.name)
     
  
-    def attack(self, other_team):
+    def team_attack(self, other_team):
         ''' Battle each team against each other.'''
         # TODO: Randomly select a living hero from each team and have
         # them fight until one or both teams have no surviving heroes.
         # Hint: Use the fight method in the Hero class.
-        pass
+        
+        if not self.heroes and not other_team.heroes:
+            print("No alive heroes left on both teams")
+        # else:
+
+    
+        # while both teams have heroes:
+        team1_hero = self.heroes[randint(0,len(self.heroes)-1)]
+        team2_hero = other_team.heroes[randint(0, len(other_team.heroes)-1)]
+        #   select random heroes from each team
+        #   and make them fight
+        
+        print(f"team 1 hero: {team1_hero.name}, team 2 hero: {team2_hero.name}")
+        
+        # team1_hero.fight(team2_hero)
+        team1_hero.fight(team2_hero)
 
     def revive_heroes(self, health=100):
         ''' Reset all heroes health to starting_health'''
@@ -216,16 +237,33 @@ class Team:
 
 
 if __name__ == "__main__":
+    wond_woman = Hero("Wonder Woman")
+    dumbledore = Hero("Dumbledore")
+    alp = Hero("Alpomish")
+    superman = Hero("Superman")
 
-    hero1 = Hero("Wonder Woman")
-    hero2 = Hero("Dumbledore")
-    ability1 = Ability("Super Speed", 3000)
-    ability2 = Ability("Super Eyes", 1000)
+    ability1 = Ability("Super Speed", 30)
+    # ability2 = Ability("Super Eyes", 1000)
     ability3 = Ability("Wizard Wand", 80)
-    ability4 = Ability("Wizard Beard", 20)
-    hero1.add_ability(ability1)
-    hero1.add_ability(ability2)
-    hero2.add_ability(ability3)
-    hero2.add_ability(ability4)
+    # ability4 = Ability("Wizard Beard", 2000)
+    ability5 = Ability("Stregth", 70)
+    ability6 = Ability("Flying Speed", 20)
+    
+    wond_woman.add_ability(ability1)
+    # wond_woman.add_ability(ability2)
+    dumbledore.add_ability(ability3)
+    # dumbledore.add_ability(ability4)
+    alp.add_ability(ability5)
+    superman.add_ability(ability6)
 
-    hero1.fight(hero2)
+    team1 = Team("Cupcake")
+    team2 = Team("Coffee")
+    team1.add_hero(wond_woman)
+    team2.add_hero(dumbledore)
+    team1.add_hero(alp)
+    team2.add_hero(superman)
+
+    team1.team_attack(team2)
+
+
+    # hero1.fight(hero2)
