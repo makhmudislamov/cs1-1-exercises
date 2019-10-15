@@ -209,17 +209,24 @@ class Team:
             print("No alive heroes left on both teams")
         # else:
 
-    
-        # while both teams have heroes:
-        team1_hero = self.heroes[randint(0,len(self.heroes)-1)]
-        team2_hero = other_team.heroes[randint(0, len(other_team.heroes)-1)]
-        #   select random heroes from each team
-        #   and make them fight
-        
-        print(f"team 1 hero: {team1_hero.name}, team 2 hero: {team2_hero.name}")
-        
-        # team1_hero.fight(team2_hero)
-        team1_hero.fight(team2_hero)
+        while self.heroes or other_team.heroes:
+            print("inside while")
+            team1_hero = self.heroes[randint(0,len(self.heroes)-1)]
+            team2_hero = other_team.heroes[randint(0, len(other_team.heroes)-1)]
+            #   select random heroes from each team
+            #   and make them fight
+            # 
+            # remove the dead hero from the team
+            if not team1_hero.is_alive():
+                self.heroes.remove(team1_hero.name)
+            elif not team2_hero.is_alive():
+                other_team.heroes.remove(team2_hero.name)
+                
+
+            print(f"team 1 hero: {team1_hero.name}, team 2 hero: {team2_hero.name}")
+            
+            # team1_hero.fight(team2_hero)
+            team1_hero.fight(team2_hero)
 
     def revive_heroes(self, health=100):
         ''' Reset all heroes health to starting_health'''
