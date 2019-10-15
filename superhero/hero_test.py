@@ -38,7 +38,7 @@ def test_ability_attack():
     test_runs = 400
     big_strength = superheroes.Ability("Overwhelming Strength", 400)
     for _ in range(0, test_runs):
-        attack = big_strength.attack()
+        attack = big_strength.ability_attack()
         assert attack >= 0 and attack <= 400
 
 # Test Weapons Class
@@ -53,7 +53,7 @@ def test_weapon_attack():
     big_stick = superheroes.Weapon("Overwhelming Stick", 200)
     test_runs = 100
     for _ in range(0, test_runs):
-        attack = big_stick.attack()
+        attack = big_stick.ability_attack()
         assert attack <= 200 and attack >= 100
 
 
@@ -91,9 +91,9 @@ def test_hero_add_multi_ability():
 def test_hero_attack_ability():
     big_strength = superheroes.Ability("Overwhelming Strength", 30000)
     athena = superheroes.Hero("Athena")
-    assert athena.attack() == 0
+    assert athena.hero_attack() == 0
     athena.add_ability(big_strength)
-    attack = athena.attack()
+    attack = athena.hero_attack()
     assert attack <= 30000 and attack >= 0
 
 
@@ -109,7 +109,7 @@ def test_hero_ability_attack_mean_value():
     total_attack = 0
 
     for _ in range(iterations):
-        attack_value = athena.attack()
+        attack_value = athena.hero_attack()
         assert attack_value >= 0 and attack_value <= strength
         total_attack += attack_value
 
@@ -134,7 +134,7 @@ def test_hero_ability_attack_standard_deviation():
     total_attack = 0
     number_tests = 1000
     for _ in range(number_tests):
-        cur_attack = willow_waffle.attack()
+        cur_attack = willow_waffle.hero_attack()
         attacks.append(cur_attack)
         total_attack += cur_attack
     mean = total_attack / number_tests
@@ -173,7 +173,7 @@ def test_hero_weapon_attack_mean_value():
     total_attack = 0
 
     for _ in range(iterations):
-        attack_value = kkrunch.attack()
+        attack_value = kkrunch.hero_attack()
         assert attack_value >= min_attack and attack_value <= strength
         total_attack += attack_value
         deviation = attack_value - calculated_mean
@@ -202,7 +202,7 @@ def test_hero_attack_standard_deviation():
     total_attack = 0
     number_tests = 1000
     for _ in range(number_tests):
-        cur_attack = willow_waffle.attack()
+        cur_attack = willow_waffle.hero_attack()
         attacks.append(cur_attack)
         total_attack += cur_attack
     mean = total_attack / number_tests
@@ -222,7 +222,7 @@ def test_hero_attack_weapon():
     Athena.add_ability(big_strength)
     test_runs = 100
     for _ in range(0, test_runs):
-        attack = big_strength.attack()
+        attack = big_strength.ability_attack()
         assert attack <= 200 and attack >= 0
 
 
@@ -236,7 +236,7 @@ def test_hero_multi_weapon_attack():
 
     test_runs = 100
     for _ in range(0, test_runs):
-        attack = Athena.attack()
+        attack = Athena.hero_attack()
         assert attack <= 900 and attack >= 0
 
 
@@ -253,7 +253,7 @@ def test_hero_weapon_ability_attack():
 def attack_avg(object, low, high):
     test_runs = 100
     for _ in range(0, test_runs):
-        attack = object.attack()
+        attack = object.hero_attack()
         assert attack <= high and attack >= low
 
 # Test Teams
