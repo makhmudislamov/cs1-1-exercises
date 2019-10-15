@@ -1,44 +1,6 @@
 from random import randint
-
-
-class Ability:
-    def __init__(self, name, max_damage):
-        '''
-        Initialize the values passed into this
-        method as instance variables.
-        '''
-        self.name = name
-        self.max_damage = max_damage
-
-    def __str__(self):
-        return f'This is ability name {self.name}'
-
-    def ability_attack(self):
-        '''
-        Use randint(a, b) to select a random attack value.
-        Return an attack value between 0 and the full attack.
-        '''
-        attack_value = randint(0, self.max_damage)
-        print(f"attack value in ability: {attack_value}")
-        return attack_value
-
-class Armor():
-    def __init__(self, name, max_block):
-        '''
-        Initialize the values passed into this
-        method as instance variables.
-        '''
-        self.name = name
-        self.max_block = max_block
-
-    def block(self):
-        ''' 
-        Return a random value between 
-        0 and the initialized max_block strength. 
-        '''
-        block_value = randint(0, self.max_block)
-        return block_value
-
+from ability_and_armor import Ability, Armor, Weapon
+from team import Team
     
 
 class Hero:
@@ -156,91 +118,8 @@ class Hero:
                 # print("{} won!".format(opponent.name))
             # break 
         print(f"Winner is {winner}")
-
-class Weapon(Ability):
-    def ability_attack(self):
-        """  This method returns a random value
-        between one half to the full attack power of the weapon.
-        """
-        return randint(self.max_damage // 2, self.max_damage)
  
 
-class Team:
-    
-    def __init__(self, name):
-        ''' 
-        Initialize your team with its team name
-        '''
-        self.name = name
-        self.heroes = list()
-
-    def add_hero(self, hero):
-        '''
-        Adding heroes to a team
-        '''
-        self.heroes.append(hero)
-        
-
-    def remove_hero(self, name):
-        '''
-        Removing heroes from the team
-        If Hero isn't found return 0.
-        '''
-        if name not in self.heroes:
-            return 0
-        else:
-            self.heroes.remove(name)
-
-    def view_all_heroes(self):
-        '''
-        Prints out all heroes to the console
-        '''
-        for hero in self.heroes:
-            print(hero.name)
-    
- 
-    def team_attack(self, other_team):
-        ''' Battle each team against each other.'''
-        # TODO: Randomly select a living hero from each team and have
-        # them fight until one or both teams have no surviving heroes.
-        # Hint: Use the fight method in the Hero class.
-        
-        if not self.heroes and not other_team.heroes:
-            print("No alive heroes left on both teams")
-        # else:
-
-        while self.heroes or other_team.heroes:
-            print("inside while")
-            team1_hero = self.heroes[randint(0,len(self.heroes)-1)]
-            team2_hero = other_team.heroes[randint(0, len(other_team.heroes)-1)]
-            #   select random heroes from each team
-            #   and make them fight
-            # 
-            # remove the dead hero from the team
-            if not team1_hero.is_alive():
-                self.heroes.remove(team1_hero.name)
-            elif not team2_hero.is_alive():
-                other_team.heroes.remove(team2_hero.name)
-                
-
-            print(f"team 1 hero: {team1_hero.name}, team 2 hero: {team2_hero.name}")
-            
-            # team1_hero.fight(team2_hero)
-            team1_hero.fight(team2_hero)
-
-    def revive_heroes(self, health=100):
-        ''' Reset all heroes health to starting_health'''
-        # TODO: This method should reset all heroes health to their
-        # original starting value.
-        pass
-
-    def stats(self):
-        '''Print team statistics'''
-        # TODO: This method should print the ratio of kills/deaths for each
-        # member of the team to the screen.
-        # This data must be output to the console.
-        # Hint: Use the information stored in each hero.
-        pass
 
 
 if __name__ == "__main__":

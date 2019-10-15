@@ -3,7 +3,7 @@
     class Weapon
     class Armor
 
-2. hero.py
+2. superheroes.py
     class Hero
 
 3. team.py

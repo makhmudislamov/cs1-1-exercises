@@ -2,6 +2,8 @@ import pytest
 import io
 import sys
 import superheroes
+import ability_and_armor
+import team
 import math
 import random
 
