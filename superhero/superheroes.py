@@ -1,6 +1,6 @@
 from random import randint
-from ability_and_armor import Ability, Armor, Weapon
-from team import Team
+from ability_and_armor import *
+from team import *
     
 
 class Hero:
@@ -63,9 +63,10 @@ class Hero:
         Runs `block` method on each armor.
         Returns sum of all blocks
         '''
-        damage_amt = 0
+        total_block = 0
         for armor in self.armors:
-            damage_amt += armor.block()
+            total_block += armor.block()
+        damage_amt -= total_block
         return damage_amt
 
     def take_damage(self, damage):
@@ -73,8 +74,8 @@ class Hero:
         This method should update self.current_health
         with the damage that is passed in.
         '''
+        # call defend() here >> damage_amt
         self.current_health -= damage
-        return self.current_health
 
     def is_alive(self):  
         '''
@@ -92,64 +93,74 @@ class Hero:
         Current Hero will take turns fighting the opponent hero passed in.
         '''
         print("{} vs {}. FIGHT!".format(self.name, opponent.name))
-
+        # winner = ''
         # base case: both heroes have no abilities to fight  
         if (not self.abilities) and (not opponent.abilities):
             print("DRAW. The Heroes have no abilites to fight!")
 
         # TODO: double check your while loop
 
-        while self.is_alive() and opponent.is_alive():
+        while self.is_alive() or opponent.is_alive():
 
             self.take_damage(opponent.hero_attack())
-            print(f"self.current healt {self.current_health}")
+            print(f"self.current health {self.current_health}")
             opponent.take_damage(self.hero_attack())
-            print(f"opponent.current healt {opponent.current_health}")
+            print(f"opponent.current health {opponent.current_health}")
             
-            if self.current_health > 0 and opponent.current_health <= 0:
+            # if self.current_health > 0 and opponent.current_health <= 0:
                 # self.add_kill(1)
                 # opponent.add_deaths(1)
-                # print("{} won!".format(self.name))
-                winner = self.name
-            elif self.current_health <= 0 and opponent.current_health > 0:
+                # winner = self.name
+            # elif self.current_health <= 0 and opponent.current_health > 0:
                 # opponent.add_kills(1)
                 # self.add_deaths(1)
-                winner = opponent.name
-                # print("{} won!".format(opponent.name))
-            # break 
+                # winner = opponent.name
+        winner = self.name if self.is_alive() else opponent.name
         print(f"Winner is {winner}")
  
 
 
-
 if __name__ == "__main__":
-    wond_woman = Hero("Wonder Woman")
-    dumbledore = Hero("Dumbledore")
-    alp = Hero("Alpomish")
-    superman = Hero("Superman")
 
-    ability1 = Ability("Super Speed", 30)
-    # ability2 = Ability("Super Eyes", 1000)
-    ability3 = Ability("Wizard Wand", 80)
-    # ability4 = Ability("Wizard Beard", 2000)
-    ability5 = Ability("Stregth", 70)
-    ability6 = Ability("Flying Speed", 20)
+    # THIS IS TEST FOR TEAM
+    # wond_woman = Hero("Wonder Woman")
+    # dumbledore = Hero("Dumbledore")
+    # alp = Hero("Alpomish")
+    # superman = Hero("Superman")
+
+    # ability1 = Ability("Super Speed", 30)
+    # # ability2 = Ability("Super Eyes", 1000)
+    # ability3 = Ability("Wizard Wand", 80)
+    # # ability4 = Ability("Wizard Beard", 2000)
+    # ability5 = Ability("Stregth", 70)
+    # ability6 = Ability("Flying Speed", 20)
     
-    wond_woman.add_ability(ability1)
-    # wond_woman.add_ability(ability2)
-    dumbledore.add_ability(ability3)
-    # dumbledore.add_ability(ability4)
-    alp.add_ability(ability5)
-    superman.add_ability(ability6)
+    # wond_woman.add_ability(ability1)
+    # # wond_woman.add_ability(ability2)
+    # dumbledore.add_ability(ability3)
+    # # dumbledore.add_ability(ability4)
+    # alp.add_ability(ability5)
+    # superman.add_ability(ability6)
 
-    team1 = Team("Cupcake")
-    team2 = Team("Coffee")
-    team1.add_hero(wond_woman)
-    team2.add_hero(dumbledore)
-    team1.add_hero(alp)
-    team2.add_hero(superman)
+    # team1 = Team("Cupcake")
+    # team2 = Team("Coffee")
+    # team1.add_hero(wond_woman)
+    # team2.add_hero(dumbledore)
+    # team1.add_hero(alp)
+    # team2.add_hero(superman)
 
-    team1.team_attack(team2)
+    # team1.team_attack(team2)
 
 
-    # hero1.fight(hero2)
+    # TEST FOR HERO ATTACK
+    hero1 = Hero("Wonder Woman")
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
+    hero1.fight(hero2)
