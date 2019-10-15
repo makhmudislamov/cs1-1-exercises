@@ -19,7 +19,7 @@ class Ability:
         Return an attack value between 0 and the full attack.
         '''
         attack_value = randint(0, self.max_damage)
-        print(f"attack value in ability: {attack_value}")
+        # print(f"attack value in ability: {attack_value}")
         self.max_damage -= attack_value
         return attack_value
 
@@ -47,7 +47,6 @@ class Armor():
         0 and the initialized max_block strength. 
         '''
         block_value = randint(0, self.max_block)
-        self.max_block -= block_value
         return block_value
 
 

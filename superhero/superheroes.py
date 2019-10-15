@@ -28,7 +28,7 @@ class Hero:
         return self.kills
 
     def add_deaths(self, num_deaths):
-        ''' Update deaths with num_deaths'''
+        '''Update deaths with num_deaths'''
         self.deaths += num_deaths
         return self.deaths
 
@@ -49,6 +49,7 @@ class Hero:
         damage = 0
         for ability in self.abilities:
             damage += ability.ability_attack()
+        
         return damage
 
     def add_armor(self, armor):
@@ -58,7 +59,7 @@ class Hero:
         '''
         self.armors.append(armor)
 
-    def defend(self, damage_amt):
+    def defend(self):
         '''
         Runs `block` method on each armor.
         Returns sum of all blocks
@@ -66,15 +67,16 @@ class Hero:
         total_block = 0
         for armor in self.armors:
             total_block += armor.block()
-        damage_amt -= total_block
-        return damage_amt
+        return total_block
 
     def take_damage(self, damage):
         '''
         This method should update self.current_health
         with the damage that is passed in.
         '''
-        # call defend() here >> damage_amt
+        
+        blocked = self.defend()
+        damage -= blocked
         self.current_health -= damage
 
     def is_alive(self):  
@@ -100,23 +102,15 @@ class Hero:
 
         # TODO: double check your while loop
 
-        while self.is_alive() or opponent.is_alive():
+        while self.is_alive() and opponent.is_alive():
 
             self.take_damage(opponent.hero_attack())
             print(f"self.current health {self.current_health}")
             opponent.take_damage(self.hero_attack())
             print(f"opponent.current health {opponent.current_health}")
             
-            # if self.current_health > 0 and opponent.current_health <= 0:
-                # self.add_kill(1)
-                # opponent.add_deaths(1)
-                # winner = self.name
-            # elif self.current_health <= 0 and opponent.current_health > 0:
-                # opponent.add_kills(1)
-                # self.add_deaths(1)
-                # winner = opponent.name
         winner = self.name if self.is_alive() else opponent.name
-        print(f"Winner is {winner}")
+        print(f"{winner} won!")
  
 
 
