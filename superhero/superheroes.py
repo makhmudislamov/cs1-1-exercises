@@ -25,12 +25,10 @@ class Hero:
     def add_kill(self, num_kills):
         ''' Update kills with num_kills'''
         self.kills += num_kills
-        return self.kills
 
     def add_deaths(self, num_deaths):
         '''Update deaths with num_deaths'''
         self.deaths += num_deaths
-        return self.deaths
 
     
 
@@ -94,23 +92,35 @@ class Hero:
         ''' 
         Current Hero will take turns fighting the opponent hero passed in.
         '''
-        print("{} vs {}. FIGHT!".format(self.name, opponent.name))
+        print(f"{self.name} vs {opponent.name}. FIGHT!")
         # winner = ''
         # base case: both heroes have no abilities to fight  
         if (not self.abilities) and (not opponent.abilities):
             print("DRAW. The Heroes have no abilites to fight!")
 
-        # TODO: double check your while loop
-
         while self.is_alive() and opponent.is_alive():
-
+            # first hero is attacking
             self.take_damage(opponent.hero_attack())
             print(f"self.current health {self.current_health}")
+            # second hero is attacking
             opponent.take_damage(self.hero_attack())
             print(f"opponent.current health {opponent.current_health}")
+
+        if not self.is_alive():
+            opponent.add_kill(1)
+            self.add_deaths(1)
+            print(f" opp_kill = {opponent.kills}")
+            print(f" self_death = {self.deaths}")
             
+        elif not opponent.is_alive():
+            self.add_kill(1)
+            opponent.add_deaths(1)
+            print(f"self kills {self.kills}")
+            print(f"opp deth {opponent.deaths}")
+        # determining the winner
         winner = self.name if self.is_alive() else opponent.name
         print(f"{winner} won!")
+
  
 
 
@@ -147,21 +157,31 @@ if __name__ == "__main__":
 
 
     # TEST FOR HERO ATTACK
+    # hero1 = Hero("Wonder Woman")
+    # hero2 = Hero("Dumbledore")
+    # ability1 = Ability("Super Speed", 300)
+    # ability2 = Ability("Super Eyes", 130)
+    # ability3 = Ability("Wizard Wand", 80)
+    # ability4 = Ability("Wizard Beard", 20)
+    # hero1.add_ability(ability1)
+    # hero1.add_ability(ability2)
+    # hero2.add_ability(ability3)
+    # hero2.add_ability(ability4)
+    # team = Team("Super")
+    # team.add_hero(hero1)
+    # team.add_hero(hero2)
+    # team.view_all_heroes()
+    # team.remove_hero("Wonder Woman")
+    # team.view_all_heroes()
     hero1 = Hero("Wonder Woman")
     hero2 = Hero("Dumbledore")
     ability1 = Ability("Super Speed", 300)
     ability2 = Ability("Super Eyes", 130)
-    ability3 = Ability("Wizard Wand", 80)
-    ability4 = Ability("Wizard Beard", 20)
+    ability3 = Ability("Wizard Wand", 800)
+    ability4 = Ability("Wizard Beard", 200)
     hero1.add_ability(ability1)
     hero1.add_ability(ability2)
     hero2.add_ability(ability3)
     hero2.add_ability(ability4)
-    team = Team("Super")
-    team.add_hero(hero1)
-    team.add_hero(hero2)
-    team.view_all_heroes()
-    team.remove_hero("Wonder Woman")
-    team.view_all_heroes()
-
+    hero1.fight(hero2)
     # hero1.fight(hero2)

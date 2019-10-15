@@ -11,7 +11,7 @@ class Ability:
         self.max_damage = max_damage
 
     def __str__(self):
-        return f'This is ability name {self.name}'
+        return f'This ability is {self.name}'
 
     def ability_attack(self):
         '''

@@ -45,12 +45,12 @@ def test_ability_attack():
 
 
 def test_weapon_instance():
-    big_stick = superheroes.Weapon("Overwhelming Stick", 200)
+    big_stick = ability_and_armor.Weapon("Overwhelming Stick", 200)
     assert "Weapon" in str(big_stick)
 
 
 def test_weapon_attack():
-    big_stick = superheroes.Weapon("Overwhelming Stick", 200)
+    big_stick = ability_and_armor.Weapon("Overwhelming Stick", 200)
     test_runs = 100
     for _ in range(0, test_runs):
         attack = big_stick.ability_attack()
