@@ -109,14 +109,14 @@ class Hero:
         if not self.is_alive():
             opponent.add_kill(1)
             self.add_deaths(1)
-            print(f" opp_kill = {opponent.kills}")
-            print(f" self_death = {self.deaths}")
+            print(f" self {self.name} death = {self.deaths}")
+            print(f" oppon {opponent.name} kill = {opponent.kills}")
             
         elif not opponent.is_alive():
             self.add_kill(1)
             opponent.add_deaths(1)
-            print(f"self kills {self.kills}")
-            print(f"opp deth {opponent.deaths}")
+            print(f" self {self.name} kills {self.kills}")
+            print(f" oppon {opponent.name} deth {opponent.deaths}")
         # determining the winner
         winner = self.name if self.is_alive() else opponent.name
         print(f"{winner} won!")
