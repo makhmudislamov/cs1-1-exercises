@@ -92,110 +92,51 @@ class Hero(object):
         ''' 
         Current Hero will take turns fighting the opponent hero passed in.
         '''
+        # Note to self:
+        # This method was the most fun to work on. 
+        # It implements several other methods of this class
+        # The method generated couple of bugs, caused interesting debates with my peers 
+        # and needed special attention during pair programming.
+        #
+        # I might come back again to this method as it is called in my future classes (Team)
         print(f"{self.name} vs {opponent.name}. FIGHT!")
-        # winner = ''
+
         # base case: both heroes have no abilities to fight  
         if (not self.abilities) and (not opponent.abilities):
             print("DRAW. The Heroes have no abilites to fight!")
 
-        
-        while True:
+        fighting = True
+        while fighting:
+
             # first hero is attacking
+            print(f"{opponent.name} is attacking...")
             self.take_damage(opponent.hero_attack())
-            # print(f"self.current health {self.current_health}")
-            # print(f"self hero: {self.name}")
+            print(f"{self.name}\'s current health {self.current_health}")
             if not self.is_alive():
                 winner = opponent.name
                 break
             # second hero is attacking
+            print(f"{self.name} is attacking...")
             opponent.take_damage(self.hero_attack())
-            # print(f"opponent.current health {opponent.current_health}")
-            # print(f"opponent hero: {opponent.name}")
+            print(f"{opponent.name}\'s current health {opponent.current_health}")
+  
             if not opponent.is_alive():
                 winner = self.name
                 break
-    
-
 
         if winner == opponent.name:
             opponent.add_kill(1)
             self.add_deaths(1)
-            # print(f" self {self.name} death = {self.deaths}")
-            # print(f" oppon {opponent.name} kill = {opponent.kills}")
+            print(f"{self.name} deaths = {self.deaths}")
+            print(f"{opponent.name} kills = {opponent.kills}")
             
         else:
             self.add_kill(1)
             opponent.add_deaths(1)
-            # print(f" self {self.name} kills {self.kills}")
-            # print(f" oppon {opponent.name} deth {opponent.deaths}")
+            print(f"{self.name} kills = {self.kills}")
+            print(f"{opponent.name} deaths = {opponent.deaths}")
 
         return winner
 
 
-
-
-# if __name__ == "__main__":
-
-#     # THIS IS TEST FOR TEAM
-#     wond_woman = Hero("Wonder Woman")
-#     dumbledore = Hero("Dumbledore")
-#     alp = Hero("Alpomish")
-#     superman = Hero("Superman")
-
-#     ability1 = Ability("Super Speed", 30)
-#     # ability2 = Ability("Super Eyes", 1000)
-#     ability3 = Ability("Wizard Wand", 80)
-#     # ability4 = Ability("Wizard Beard", 2000)
-#     ability5 = Ability("Stregth", 70)
-#     ability6 = Ability("Flying Speed", 20)
-    
-#     wond_woman.add_ability(ability1)
-#     # wond_woman.add_ability(ability2)
-#     dumbledore.add_ability(ability3)
-#     # dumbledore.add_ability(ability4)
-#     alp.add_ability(ability5)
-#     superman.add_ability(ability6)
-
-#     team1 = Team("Cupcake")
-#     team2 = Team("Coffee")
-#     team1.add_hero(wond_woman)
-#     team2.add_hero(dumbledore)
-#     team1.add_hero(alp)
-#     team2.add_hero(superman)
-#     team1.view_all_heroes()
-#     team2.view_all_heroes()
-
-#     team1.team_attack(team2)
-
-
-#     # TEST FOR HERO ATTACK
-#     # hero1 = Hero("Wonder Woman")
-#     # hero2 = Hero("Dumbledore")
-#     # ability1 = Ability("Super Speed", 300)
-#     # ability2 = Ability("Super Eyes", 130)
-#     # ability3 = Ability("Wizard Wand", 80)
-#     # ability4 = Ability("Wizard Beard", 20)
-#     # hero1.add_ability(ability1)
-#     # hero1.add_ability(ability2)
-#     # hero2.add_ability(ability3)
-#     # hero2.add_ability(ability4)
-#     # team = Team("Super")
-#     # team.add_hero(hero1)
-#     # team.add_hero(hero2)
-#     # team.view_all_heroes()
-#     # team.remove_hero("Wonder Woman")
-#     # team.view_all_heroes()
-
-#     # hero1 = Hero("Wonder Woman")
-#     # hero2 = Hero("Dumbledore")
-#     # ability1 = Ability("Super Speed", 300)
-#     # ability2 = Ability("Super Eyes", 130)
-#     # ability3 = Ability("Wizard Wand", 800)
-#     # ability4 = Ability("Wizard Beard", 200)
-#     # hero1.add_ability(ability1)
-#     # hero1.add_ability(ability2)
-#     # hero2.add_ability(ability3)
-#     # hero2.add_ability(ability4)
-#     # winner = hero1.fight(hero2)
-#     # print(f"Winner is {winner}")
 
