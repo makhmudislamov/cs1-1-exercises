@@ -33,5 +33,19 @@ Superhero Dueller is a mini simulator where users can duel their favorite superh
 * [ ] Build teams of supeheroes
 `see class Team`
 * [ ] Make the supeheroes fight in arena
-`see class Arena
+`see class Arena`
+
+## Skills and Resources used
+
+1. OOP level development
+* [x] Abstraction
+* [x] Encapsulation `classes`
+* [x] Inheritance `class Weapon(Ability)`
+* [x] Polymorphism (method override) in `class Weapon, ability_attack() method`
+
+2. Resources and other skills used in this project
+* [X] Bugfixing
+* [x] Pair programming with [Sukhrobjon Golibboev](https://github.com/Sukhrobjon)
+* [X] Python Documentation
+* [X] Stackoverflow
 
