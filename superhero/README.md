@@ -13,8 +13,10 @@ Superhero Dueller is a mini simulator where users can duel their favorite superh
 3. Add armors and abilites with their power units using the relative functions.
 
    Example:
+   ```
    laser_sword = Ability("Laser Sword", 200)
-   hero_name.add_ability(laser_sword) 
+   hero_name.add_ability(laser_sword)
+   ``` 
 4. call fight method to find out who is the winner.
 
 ## Features
