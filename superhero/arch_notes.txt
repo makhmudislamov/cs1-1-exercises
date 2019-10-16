@@ -5,6 +5,12 @@
 
 2. superheroes.py
     class Hero
+    imports ability_and_armor.py
 
 3. team.py
     class Team
+    imports superheroes.py 
+
+4. main.py
+    the function call is done here
+    imports superheroes.py and team.py
