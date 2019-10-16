@@ -1,5 +1,5 @@
 from random import randint
-from team import Team
+
 
 class Ability:
     def __init__(self, name, max_damage):
@@ -50,5 +50,5 @@ class Armor():
         return block_value
 
 
-if __name__ == "__main__":
-    pass
+# if __name__ == "__main__":
+#     pass

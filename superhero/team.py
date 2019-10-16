@@ -1,8 +1,8 @@
 from random import randint
-import superheroes
-import ability_and_armor
+from superheroes import *
 
-class Team:
+
+class Team(object):
 
     def __init__(self, name):
         ''' 
@@ -16,8 +16,7 @@ class Team:
         Adding heroes to a team
         '''
         self.heroes.append(hero)
-        # testing
-        print(f'added hero is {hero}')
+
 
     def remove_hero(self, name):
         '''
@@ -47,31 +46,32 @@ class Team:
             print("No alive heroes left on both teams")
         # else:
 
-        while self.heroes or other_team.heroes:
-            print("inside while")
-            team1_hero = self.heroes[randint(0, len(self.heroes)-1)]
-            team2_hero = other_team.heroes[randint(
-                0, len(other_team.heroes)-1)]
-            #   select random heroes from each team
-            #   and make them fight
-            #
-            # remove the dead hero from the team
-            if not team1_hero.is_alive():
-                self.heroes.remove(team1_hero.name)
-            elif not team2_hero.is_alive():
-                other_team.heroes.remove(team2_hero.name)
+        # while self.heroes or other_team.heroes:
+        # print("inside while")
+        # select random heroes from each team
+        team1_hero = self.heroes[0]
+        team2_hero = other_team.heroes[0]
+        print(f"hero 1: {team1_hero.name}")
+        
+        # TODO: calling fight() from class Hero - Needs bugfix
+        winner = team1_hero.fight(team2_hero)
+        if winner == team1_hero.name:
+            other_team.remove_hero(team2_hero.name)
+        else:
+            self.remove_hero(team1_hero.name)
+        # print(f"Winner is {winner}")
+        # print(f"team1 {self.heroes}")
+        # print(f"team2 {other_team.heroes}")
+            # print(f"team 1 hero: {team1_hero.name}, team 2 hero: {team2_hero.name}")
 
-            print(
-                f"team 1 hero: {team1_hero.name}, team 2 hero: {team2_hero.name}")
-
-            # team1_hero.fight(team2_hero)
-            team1_hero.fight(team2_hero)
 
     def revive_heroes(self, health=100):
         ''' Reset all heroes health to starting_health'''
         # TODO: This method should reset all heroes health to their
         # original starting value.
-        pass
+        for hero in self.heroes:
+            hero.current_health = health
+        
 
     def stats(self):
         '''Print team statistics'''
@@ -80,3 +80,7 @@ class Team:
         # This data must be output to the console.
         # Hint: Use the information stored in each hero.
         pass
+
+
+# if __name__ == "__main__":
+#     pass
