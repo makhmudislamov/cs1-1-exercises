@@ -11,6 +11,7 @@ Superhero Dueller is a mini simulator where users can duel their favorite superh
 1. Download this repo
 2. Go to main.py to build your superheroes
 3. Add armors and abilites with their power units using the relative functions.
+
    Example:
    laser_sword = Ability("Laser Sword", 200)
    hero_name.add_ability(laser_sword) 
@@ -27,8 +28,8 @@ Superhero Dueller is a mini simulator where users can duel their favorite superh
 `see def add_kill() and def add_deaths()`
 
 **Coming Soon**
-* [X] Build teams of supeheroes
+* [ ] Build teams of supeheroes
 `see class Team`
-* [X] Make the supeheroes fight in arena
+* [ ] Make the supeheroes fight in arena
 `see class Arena
 
