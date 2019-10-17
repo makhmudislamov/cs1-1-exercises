@@ -92,13 +92,13 @@ class Hero(object):
         ''' 
         Current Hero will take turns fighting the opponent hero passed in.
         '''
-        # Note to self:
+        # Note:
         # This method was the most fun to work on. 
         # It implements several other methods of this class
         # The method generated couple of bugs, caused interesting debates with my peers 
         # and needed special attention during pair programming.
         #
-        # I might come back again to this method as it is called in my future classes (Team)
+        # I might come back again to this method as it is used in future classes (class Team, team_attack())
         print(f"{self.name} vs {opponent.name}. FIGHT!")
 
         # base case: both heroes have no abilities to fight  

@@ -3,7 +3,7 @@ from team import *
 
 if __name__ == "__main__":
 
-    # THIS IS TEST FOR TEAM
+    # TEST 1 FOR TEAM
     # wond_woman = Hero("Wonder Woman")
     # dumbledore = Hero("Dumbledore")
     # alp = Hero("Alpomish")
@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     # team1.team_attack(team2)
 
-    # TEST FOR HERO ATTACK
+    # TEST 2 FOR HERO ATTACK
     # hero1 = Hero("Wonder Woman")
     # hero2 = Hero("Dumbledore")
     # ability1 = Ability("Super Speed", 300)

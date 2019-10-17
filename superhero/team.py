@@ -40,7 +40,7 @@ class Team(object):
         ''' Battle each team against each other.'''
         # TODO: Randomly select a living hero from each team and have
         # them fight until one or both teams have no surviving heroes.
-        # Hint: Use the fight method in the Hero class.
+        
 
         if not self.heroes and not other_team.heroes:
             print("No alive heroes left on both teams")
